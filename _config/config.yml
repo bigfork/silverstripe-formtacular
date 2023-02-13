@@ -1,0 +1,36 @@
+---
+Name: silverstripe-formtacular
+---
+SilverStripe\Admin\LeftAndMain:
+  extensions:
+    - Bigfork\SilverstripeFormtacular\Extensions\LeftAndMainExtension
+SilverStripe\Core\Injector\Injector:
+  Bigfork\SilverstripeFormtacular\Extensions\FormExtension:
+    type: 'prototype'
+  Bigfork\SilverstripeFormtacular\Extensions\FormFieldExtension:
+    type: 'prototype'
+SilverStripe\Forms\Form:
+  extensions:
+    - Bigfork\SilverstripeFormtacular\Extensions\FormExtension
+SilverStripe\Forms\FormField:
+  extensions:
+    - Bigfork\SilverstripeFormtacular\Extensions\FormFieldExtension
+Bigfork\SilverstripeFormtacular\Rules\RuleSet:
+  fluid_syntax_rules:
+    isEqualTo: 'Bigfork\SilverstripeFormtacular\Rules\IsEqualToRule'
+    isNotEqualTo: 'Bigfork\SilverstripeFormtacular\Rules\IsNotEqualToRule'
+    isChecked: 'Bigfork\SilverstripeFormtacular\Rules\IsCheckedRule'
+    isNotChecked: 'Bigfork\SilverstripeFormtacular\Rules\IsNotCheckedRule'
+    isGreaterThan: 'Bigfork\SilverstripeFormtacular\Rules\IsGreaterThanRule'
+    isLessThan: 'Bigfork\SilverstripeFormtacular\Rules\IsLessThanRule'
+    contains: 'Bigfork\SilverstripeFormtacular\Rules\ContainsRule'
+    startsWith: 'Bigfork\SilverstripeFormtacular\Rules\StartsWithRule'
+    endsWith: 'Bigfork\SilverstripeFormtacular\Rules\EndsWithRule'
+    isEmpty: 'Bigfork\SilverstripeFormtacular\Rules\IsEmptyRule'
+    isNotEmpty: 'Bigfork\SilverstripeFormtacular\Rules\IsNotEmptyRule'
+    isBetween: 'Bigfork\SilverstripeFormtacular\Rules\IsBetweenRule'
+    hasCheckedOption: 'Bigfork\SilverstripeFormtacular\Rules\HasCheckedOptionRule'
+    hasCheckedMoreThan: 'Bigfork\SilverstripeFormtacular\Rules\HasCheckedMoreThanRule'
+    hasCheckedFewerThan: 'Bigfork\SilverstripeFormtacular\Rules\HasCheckedFewerThanRule'
+    hasCheckedAtLeast: 'Bigfork\SilverstripeFormtacular\Rules\HasCheckedAtLeastRule'
+    hasCheckedLessThan: 'Bigfork\SilverstripeFormtacular\Rules\HasCheckedLessThanRule'
