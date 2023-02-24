@@ -97,6 +97,7 @@ class FormFieldExtension extends Extension
         }
 
         $this->setValidationApplicableRuleSet($ruleSet);
+        $this->setInitialValidationApplicable($this->getInitiallyVisible());
         return $ruleSet;
     }
 
