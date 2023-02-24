@@ -46,8 +46,8 @@ class Rule {
         const inputs = getFieldInputs(this.getForm(), this.getConfig());
 
         inputs.forEach((input) => {
-            input.addEventListener('input', () => this.handleInputChange());
-            input.addEventListener('change', () => this.handleInputChange());
+            const key = 'formtacular_bindChangeEvent';
+            window[key](input, () => this.handleInputChange());
         });
     }
 
@@ -67,7 +67,8 @@ class Rule {
 
     evaluate() {
         const config = this.getConfig();
-        const test = window[config.test];
+        const key = `formtacular_${config.test}`;
+        const test = window[key];
         return test(this.getForm(), config);
     }
 }

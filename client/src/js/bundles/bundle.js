@@ -1,11 +1,15 @@
 import FormtacularForm from '../classes/FormtacularForm';
 import evaluationFunctions from '../rules';
-import formtacularForms from '../utils/formtacularForms';
-
-window.formtacularForms = formtacularForms;
+import utils from '../utils';
 
 Object.keys(evaluationFunctions).forEach((key) => {
-    window[key] = window[key] || evaluationFunctions[key];
+    const globalKey = `formtacular_${key}`;
+    window[globalKey] = window[globalKey] || evaluationFunctions[key];
+});
+
+Object.keys(utils).forEach((key) => {
+    const globalKey = `formtacular_${key}`;
+    window[globalKey] = window[globalKey] || utils[key];
 });
 
 const setup = () => {
@@ -14,8 +18,9 @@ const setup = () => {
             return;
         }
 
+        const forms = window['formtacular_forms'];
         const form = new FormtacularForm(formElement);
-        formtacularForms.set(formElement, form);
+        forms.set(formElement, form);
     });
 };
 
