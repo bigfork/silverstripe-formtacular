@@ -24,7 +24,6 @@ class RuleSet
 
     protected string $fluidSyntaxFieldName = '';
 
-
     public function __construct(string $operator = '', array $rules = [])
     {
         $this->setOperator($operator);

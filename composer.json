@@ -12,10 +12,17 @@
     "require": {
         "silverstripe/framework": "^4.12"
     },
+    "replace": {
+        "silverstripe/display-logic": "*",
+        "unclecheese/display-logic": "*"
+    },
     "autoload": {
         "psr-4": {
             "Bigfork\\SilverstripeFormtacular\\": "src/"
-        }
+        },
+        "files": [
+            "compat/DisplayLogicWrapper.php"
+        ]
     },
     "extra": {
         "expose": [
