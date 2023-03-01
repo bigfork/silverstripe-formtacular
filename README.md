@@ -74,8 +74,6 @@ $validator = \Bigfork\SilverstripeFormtacular\Validators\RequiredFields::create(
 
 - Add this module to your composer requirements, it’ll automatically replace `display-logic` in any dependencies or
 sub-dependencies that require it
-- Avoid chaining display rules onto FormField construction. I.e. instead of `TextField::create()->displayIf();`, use
-`$field = TextField::create(); $field->displayIf();`
 - Switch from `Wrapper::create()` to just using `CompositeField::create()`. This step can be skipped as a `Wrapper`
 class is provided to try to make life a little easier
 

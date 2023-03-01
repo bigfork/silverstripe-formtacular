@@ -24,6 +24,7 @@ class FormFieldExtension extends Extension
     {
         $ruleSet = RuleSet::create();
         $ruleSet->setFluidSyntaxFieldName($field);
+        $ruleSet->setParentFormField($this->owner);
         $this->setVisibilityRuleSet($ruleSet);
         $this->setInitiallyVisible(false);
         return $ruleSet;
@@ -33,6 +34,7 @@ class FormFieldExtension extends Extension
     {
         $ruleSet = RuleSet::create();
         $ruleSet->setFluidSyntaxFieldName($field);
+        $ruleSet->setParentFormField($this->owner);
         $this->setVisibilityRuleSet($ruleSet);
         $this->setInitiallyVisible(true);
         return $ruleSet;
@@ -105,6 +107,7 @@ class FormFieldExtension extends Extension
     {
         $ruleSet = RuleSet::create();
         $ruleSet->setFluidSyntaxFieldName($field);
+        $ruleSet->setParentFormField($this->owner);
         $this->setValidationApplicableRuleSet($ruleSet);
         $this->setInitialValidationApplicable(false);
         return $ruleSet;
@@ -114,6 +117,7 @@ class FormFieldExtension extends Extension
     {
         $ruleSet = RuleSet::create();
         $ruleSet->setFluidSyntaxFieldName($field);
+        $ruleSet->setParentFormField($this->owner);
         $this->setValidationApplicableRuleSet($ruleSet);
         $this->setInitialValidationApplicable(true);
         return $ruleSet;

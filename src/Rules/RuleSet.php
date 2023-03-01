@@ -8,6 +8,7 @@ use SilverStripe\Core\Config\Configurable;
 use SilverStripe\Core\Injector\Injectable;
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Forms\Form;
+use SilverStripe\Forms\FormField;
 
 class RuleSet
 {
@@ -19,6 +20,8 @@ class RuleSet
     protected array $rules = [];
 
     protected ?Form $form = null;
+
+    protected ?FormField $parentFormField = null;
 
     protected ?RuleSet $parentRuleSet = null;
 
@@ -127,6 +130,12 @@ class RuleSet
         return $this->setFluidSyntaxFieldName($fieldName);
     }
 
+    public function setParentFormField(FormField $field): RuleSet
+    {
+        $this->parentFormField = $field;
+        return $this;
+    }
+
     public function setParentRuleSet(RuleSet $ruleSet): RuleSet
     {
         $this->parentRuleSet = $ruleSet;
@@ -140,9 +149,13 @@ class RuleSet
         return $childRuleSet;
     }
 
-    public function end(): RuleSet
+    public function end(): RuleSet|FormField
     {
         if (!$this->parentRuleSet) {
+            if ($this->parentFormField) {
+                return $this->parentFormField;
+            }
+
             throw new LogicException('Cannot call end() on top-level rule set, did you forget to call group()?');
         }
 
