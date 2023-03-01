@@ -18,12 +18,6 @@ class FormExtension extends Extension
 
     protected array $fieldValidationConfig = [];
 
-    public function CallOnBeforeRenderHook(): void
-    {
-        $context = $this->owner;
-        $this->owner->extend('onBeforeRender', $context);
-    }
-
     public function onBeforeRender(Form $form): void
     {
         /** @var FormField|FormFieldExtension $field */
