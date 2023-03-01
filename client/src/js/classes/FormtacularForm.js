@@ -17,6 +17,7 @@ class FormtacularForm {
             const field = new FormtacularField(this, holderElement, rule.ruleset, rule.initiallyVisible);
             this.fields.push(field);
         });
+        this.refresh();
     }
 
     getFormElement() {
