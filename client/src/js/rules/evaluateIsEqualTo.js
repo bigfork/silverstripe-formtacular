@@ -1,5 +1,6 @@
-import getFieldValue from '../utils/getFieldValue';
-
+/**
+ * Override with window['formtacular_evaluateIsEqualTo'] = (form, config) => {}
+ */
 export default (form, config) => {
-    return getFieldValue(form, config) === config.arguments[0];
+    return window.formtacular_getFieldValue(form, config) === config.arguments[0];
 }

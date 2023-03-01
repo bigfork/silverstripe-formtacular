@@ -1,6 +1,8 @@
 import FormtacularField from './FormtacularField';
-import getFieldHolder from '../utils/getFieldHolder';
 
+/**
+ * An object representing a form which contains fields with conditional visibility rules applied
+ */
 class FormtacularForm {
     constructor(formElement) {
         this.formElement = formElement;
@@ -8,7 +10,7 @@ class FormtacularForm {
 
         this.fields = [];
         this.rules.forEach((rule) => {
-            const holderElement = getFieldHolder(this, rule);
+            const holderElement = window.formtacular_getFieldHolder(this, rule);
             if (!holderElement) {
                 console.error(`Field holder not found for field: ${rule.fieldName}`);
                 return;

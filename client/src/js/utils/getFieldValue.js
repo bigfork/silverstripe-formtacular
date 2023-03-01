@@ -1,5 +1,10 @@
-import getFieldInputs from './getFieldInputs';
-
+/**
+ * Given a form element and field configuration data (name, ids etc), get the value of the field
+ * for evaluation by visibility rules. The value could be a string for text fields, or an array
+ * of data for fields like checkboxes
+ *
+ * Can be overridden by setting window['formtacular_getFieldValue'] = (form, config) => {}
+ */
 export default (form, config) => {
     const formData = new FormData(form.getFormElement());
     if (formData.get(config.fieldName) !== null) {

@@ -1,6 +1,10 @@
 import Rule from './Rule';
 import RuleSet from './RuleSet';
 
+/**
+ * A NestedRuleSetRule is a special type of rule that defers its checks to a set of child rules.
+ * This is used when ->group() is called to group multiple checks together
+ */
 class NestedRuleSetRule extends Rule {
     constructor(parent, config) {
         super(parent, config);

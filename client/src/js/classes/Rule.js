@@ -1,6 +1,10 @@
 import FormtacularField from './FormtacularField';
-import getFieldInputs from '../utils/getFieldInputs';
 
+/**
+ * An individual Rule represents a single test (e.g. ->isEqualTo('string')) that's checked against
+ * a field. A single Rule may decide the visibility of a field, or it may be just one rule in a
+ * RuleSet of many rules which collectively decide
+ */
 class Rule {
     constructor(parent, config) {
         this.parent = parent;
@@ -43,11 +47,10 @@ class Rule {
     }
 
     bind() {
-        const inputs = getFieldInputs(this.getForm(), this.getConfig());
+        const inputs = window.formtacular_getFieldInputs(this.getForm(), this.getConfig());
 
         inputs.forEach((input) => {
-            const key = 'formtacular_bindChangeEvent';
-            window[key](input, () => this.handleInputChange());
+            window.formtacular_bindChangeEvent(input, () => this.handleInputChange());
         });
     }
 
@@ -68,8 +71,7 @@ class Rule {
     evaluate() {
         const config = this.getConfig();
         const key = `formtacular_${config.test}`;
-        const test = window[key];
-        return test(this.getForm(), config);
+        return window[key](this.getForm(), config);
     }
 }
 

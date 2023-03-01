@@ -1,7 +1,8 @@
-import getFieldValue from '../utils/getFieldValue';
-
+/**
+ * Override with window['formtacular_evaluateIsGreaterThan'] = (form, config) => {}
+ */
 export default (form, config) => {
-    let value = getFieldValue(form, config);
+    let value = window.formtacular_getFieldValue(form, config);
     if (value === null) {
         return false;
     }

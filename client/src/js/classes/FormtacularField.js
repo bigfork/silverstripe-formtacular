@@ -1,5 +1,8 @@
 import RuleSet from './RuleSet';
 
+/**
+ * An object representing a field that has conditional visibility rules applied
+ */
 class FormtacularField {
     constructor(form, holderElement, ruleSetConfig, initiallyVisible) {
         this.form = form;

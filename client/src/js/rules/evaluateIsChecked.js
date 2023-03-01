@@ -1,5 +1,6 @@
-import getFieldValue from '../utils/getFieldValue';
-
+/**
+ * Override with window['formtacular_evaluateIsChecked'] = (form, config) => {}
+ */
 export default (form, config) => {
-    return !!getFieldValue(form, config);
+    return !!window.formtacular_getFieldValue(form, config);
 }

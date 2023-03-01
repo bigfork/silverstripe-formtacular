@@ -4,9 +4,9 @@ import evaluationFunctions from '../rules';
 import utils from '../utils';
 
 // Use jQuery's input change tracking - ensures select2 dropdowns work for example
-window['formtacular_bindChangeEvent'] = (input, handler) => {
+window['formtacular_bindChangeEvent'] = window['formtacular_bindChangeEvent'] || ((input, handler) => {
     $(input).on('change input', handler);
-}
+});
 
 Object.keys(evaluationFunctions).forEach((key) => {
     const globalKey = `formtacular_${key}`;

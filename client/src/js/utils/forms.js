@@ -1,3 +1,7 @@
+/**
+ * This is in-memory storage of FormtacularForm instances - essentially used to ensure that forms
+ * don't get events bound twice, and upon removal ensure that instances are garbage collected
+ */
 export default {
     _key: 'formtacularForm',
 

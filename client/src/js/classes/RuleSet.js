@@ -1,6 +1,11 @@
 import NestedRuleSetRule from './NestedRuleSetRule';
 import Rule from './Rule';
 
+/**
+ * A RuleSet contains a list of rules that either belong directly to a field, or are nested with
+ * a NestedRuleSetRule. The result of the visibility check performed on a RuleSet is the sum of
+ * the results of its child Rules.
+ */
 class RuleSet {
     constructor(parent, config) {
         this.parent = parent;
