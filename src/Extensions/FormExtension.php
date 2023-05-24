@@ -38,6 +38,17 @@ class FormExtension extends Extension
                 $this->addFieldValidationApplicableRuleSetToConfig($form, $field, $ruleSet);
             }
         }
+        /** @var FormField|FormFieldExtension $field */
+        foreach ($form->Actions()->flattenFields() as $field) {
+            $ruleSet = $field->getVisibilityRuleSet();
+            if ($ruleSet) {
+                $this->addFieldVisibilityRuleSetToConfig($form, $field, $ruleSet);
+
+                if (!$field->getIsVisible($form)) {
+                    $field->addExtraClass('formtacular-hidden');
+                }
+            }
+        }
 
         if ($this->fieldVisibilityConfig) {
             $json = json_encode($this->fieldVisibilityConfig, JSON_THROW_ON_ERROR);
