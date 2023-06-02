@@ -14,7 +14,8 @@ export default (form, config) => {
     // Fields like checkboxes/multi-selects are stored differently, so we have to extract the values manually
     let value = null;
     for (const pair of formData.entries()) {
-        if (pair[0].startsWith(config.fieldName)) {
+        // Array values like FieldName[]
+        if (pair[0].startsWith(`${config.fieldName}[`)) {
             value = value || [];
             value.push(pair[1]);
         }
