@@ -7,7 +7,7 @@ A work-in-progress attempt at replacing/combining the functionalities of
 [zenvalidator](https://github.com/sheadawson/silverstripe-zenvalidator), with the goal of removing the jQuery and jQuery
 Entwine dependencies.
 
-## Done
+### Done
 
 - Combined conditional fields + conditional validation functionality.
 - API compatibility with display-logic where possible (effectively complete).
@@ -16,18 +16,18 @@ Entwine dependencies.
 - "Pluggable" for overriding front-end JavaScript for display rules.
 - CMS compatibility. This is functional but hasn't been extensively tested.
 
-## Todo
+### Todo
 
 - Front-end conditional validation is not required as part of this module, only the config - but examples of how to
 achieve it should be shown.
 - Support for AJAX forms / lazily-loaded forms, possibly via MutationObserver. Or at least an example.
-- Feature parity with zenvalidator around constraints. Likely only for Silverstripe 5 due to lack of necessary hooks in
-Silverstripe 4.
+- Feature parity with zenvalidator around constraints, utilizing the `updateValidationResult` extension hook (SS5 only)
+- Compatibility with userforms conditional display logic
 
 ## Required CSS
 
 No frontend CSS is provided for this, because it's pretty simple for 99% of usecases and loading it from a separate CSS
-file seems wasteful when its so easy to add to an existing project:
+file seems wasteful when it's so easy to add to an existing project:
 
 ```css
 div.formtacular-hidden {
