@@ -20,7 +20,7 @@ Entwine dependencies.
 
 - Front-end conditional validation is not required as part of this module, only the config - but examples of how to
 achieve it should be shown.
-- Support for AJAX forms / lazily-loaded forms, possibly via MutationObserver. Or at least an example.
+- Tidy up JavaScript API. Polluting "window" isn't ideal, but it does keep things reasonably simple...
 - Feature parity with zenvalidator around constraints, utilizing the `updateValidationResult` extension hook (SS5 only)
 - Compatibility with userforms conditional display logic
 
@@ -76,6 +76,67 @@ $validator = \Bigfork\SilverstripeFormtacular\Validators\RequiredFields::create(
 sub-dependencies that require it
 - Switch from `Wrapper::create()` to just using `CompositeField::create()`. This step can be skipped as a `Wrapper`
 class is provided to try to make life a little easier
+
+## AJAX forms
+
+Depending on how you handle AJAX forms, you may need to re-initialise the JavaScript after submission. As every
+approach is different, you will need to implement your own logic for re-initialising the form if/when HTML is modified.
+For example a popular way of handling AJAX form submissions is to replace the entire form HTML with the response from
+the server; so your form handler could do something like:
+
+```js
+// Your import path may vary
+import FormtacularForm from '~vendor/bigfork/silverstripe-formtacular/client/src/js/classes/FormtacularForm';
+
+.then((response) => {
+  const formHTML = response;
+  let $form = $container.find('form');
+
+  const forms = window['formtacular_forms'];
+  forms.remove($form.get(0));
+
+  $form.replaceWith(formHTML);
+  $form = $container.find('form'); // Re-fetch to get new <form>
+
+  const formtacularForm = new FormtacularForm($form.get(0));
+  forms.set(node, form);
+});
+```
+
+An alternative “global” way of handling this is to use a `MutationObserver` to detect when any form is added to or 
+removed from the document:
+
+```js
+// Your import path may vary
+import FormtacularForm from '~vendor/bigfork/silverstripe-formtacular/client/src/js/classes/FormtacularForm';
+
+const observer = new MutationObserver((mutations) => {
+  const forms = window['formtacular_forms'];
+  
+  mutations.forEach((mutation) => {
+    [...mutation.removedNodes].forEach((node) => {
+      if (node.nodeName === 'FORM') {
+        forms.remove(node);
+      }
+    });
+
+    [...mutation.addedNodes].forEach((node) => {
+      if (node.nodeName === 'FORM') {
+        if (!node.hasAttribute('data-formtacular-visibility')) {
+          return;
+        }
+
+        const form = new FormtacularForm(node);
+        forms.set(node, form);
+      }
+    });
+  });
+});
+
+addEventListener('DOMContentLoaded', () => {
+  observer.observe(document.body, { childList: true, subtree: true });
+});
+```
 
 ## Customisation
 
