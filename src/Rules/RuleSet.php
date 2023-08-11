@@ -149,7 +149,10 @@ class RuleSet
         return $childRuleSet;
     }
 
-    public function end(): RuleSet|FormField
+    /**
+     * @return RuleSet|FormField
+     */
+    public function end()
     {
         if (!$this->parentRuleSet) {
             if ($this->parentFormField) {
