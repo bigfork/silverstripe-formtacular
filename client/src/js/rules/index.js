@@ -9,6 +9,7 @@ import evaluateIsEmpty from './evaluateIsEmpty';
 import evaluateIsNotEmpty from './evaluateIsNotEmpty';
 import evaluateIsBetween from './evaluateIsBetween';
 import evaluateHasCheckedOption from './evaluateHasCheckedOption';
+import evaluateHasNotCheckedOption from './evaluateHasNotCheckedOption';
 import evaluateHasCheckedMoreThan from './evaluateHasCheckedMoreThan';
 import evaluateHasCheckedFewerThan from './evaluateHasCheckedFewerThan';
 
@@ -24,6 +25,7 @@ export default {
     evaluateIsNotEmpty,
     evaluateIsBetween,
     evaluateHasCheckedOption,
+    evaluateHasNotCheckedOption,
     evaluateHasCheckedMoreThan,
     evaluateHasCheckedFewerThan,
 }

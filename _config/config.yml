@@ -30,6 +30,7 @@ Bigfork\SilverstripeFormtacular\Rules\RuleSet:
     isNotEmpty: 'Bigfork\SilverstripeFormtacular\Rules\IsNotEmptyRule'
     isBetween: 'Bigfork\SilverstripeFormtacular\Rules\IsBetweenRule'
     hasCheckedOption: 'Bigfork\SilverstripeFormtacular\Rules\HasCheckedOptionRule'
+    hasNotCheckedOption: 'Bigfork\SilverstripeFormtacular\Rules\HasNotCheckedOptionRule'
     hasCheckedMoreThan: 'Bigfork\SilverstripeFormtacular\Rules\HasCheckedMoreThanRule'
     hasCheckedFewerThan: 'Bigfork\SilverstripeFormtacular\Rules\HasCheckedFewerThanRule'
     hasCheckedAtLeast: 'Bigfork\SilverstripeFormtacular\Rules\HasCheckedAtLeastRule'
