@@ -5,9 +5,9 @@ namespace Bigfork\SilverstripeFormtacular\Validators;
 use Bigfork\SilverstripeFormtacular\Extensions\FormFieldExtension;
 use SilverStripe\Forms\CompositeField;
 use SilverStripe\Forms\FormField;
-use SilverStripe\Forms\RequiredFields as SilverstripeRequiredFields;
+use SilverStripe\Forms\Validation\RequiredFieldsValidator;
 
-class RequiredFields extends SilverstripeRequiredFields
+class RequiredFields extends RequiredFieldsValidator
 {
     public function php($data): bool
     {

@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "silverstripe/framework": "^4.12|^5"
+        "silverstripe/framework": "^6"
     },
     "replace": {
         "silverstripe/display-logic": "*",
