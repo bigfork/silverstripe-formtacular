@@ -58,4 +58,12 @@ abstract class AbstractRule
             'arguments' => $this->getJavaScriptTestArguments()
         ];
     }
+
+    public function canBeApplied(): bool
+    {
+        if (!$this->form || !$field = $this->form->Fields()->dataFieldByName($this->fieldName)) {
+            return false;
+        }
+        return true;
+    }
 }

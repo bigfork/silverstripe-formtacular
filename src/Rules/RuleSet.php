@@ -68,6 +68,10 @@ class RuleSet
 
         /** @var AbstractRule $rule */
         foreach ($this->getRules() as $rule) {
+            if (!$rule->canBeApplied()) {
+                continue;
+            }
+
             $result = $this->operator === 'or' ? ($result || $rule->getResult()) : ($result && $rule->getResult());
         }
 
@@ -175,6 +179,10 @@ class RuleSet
 
         /** @var AbstractRule $rule */
         foreach ($this->rules as $rule) {
+            if (!$rule->canBeApplied()) {
+                continue;
+            }
+
             $data['rules'][] = $rule->getJavaScriptConfig();
         }
 
