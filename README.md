@@ -1,32 +1,12 @@
-# ⚠️ This is alpha software, APIs may change ⚠️
-
 # Silverstripe Formtacular
 
-A work-in-progress attempt at replacing/combining the functionalities of
-[display-logic](https://github.com/unclecheese/silverstripe-display-logic) and
-[zenvalidator](https://github.com/sheadawson/silverstripe-zenvalidator), with the goal of removing the jQuery and jQuery
+A replacement/combination of [display-logic](https://github.com/unclecheese/silverstripe-display-logic) and
+[zenvalidator](https://github.com/sheadawson/silverstripe-zenvalidator), without the jQuery and jQuery
 Entwine dependencies.
-
-### Done
-
-- Combined conditional fields + conditional validation functionality.
-- API compatibility with display-logic where possible (effectively complete).
-- Dependency-free JavaScript logic.
-- Extensible for things like custom display rules.
-- "Pluggable" for overriding front-end JavaScript for display rules.
-- CMS compatibility. This is functional but hasn't been extensively tested.
-
-### Todo
-
-- Front-end conditional validation is not required as part of this module, only the config - but examples of how to
-achieve it should be shown.
-- Tidy up JavaScript API. Polluting "window" isn't ideal, but it does keep things reasonably simple...
-- Feature parity with zenvalidator around constraints, utilizing the `updateValidationResult` extension hook (SS5 only)
-- Compatibility with userforms conditional display logic
 
 ## Required CSS
 
-No frontend CSS is provided for this, because it's pretty simple for 99% of usecases and loading it from a separate CSS
+No frontend CSS is provided for this because it's pretty simple for 99% of use-cases, and loading it from a separate CSS
 file seems wasteful when it's so easy to add to an existing project:
 
 ```css
@@ -103,7 +83,7 @@ import FormtacularForm from '~vendor/bigfork/silverstripe-formtacular/client/src
 });
 ```
 
-An alternative “global” way of handling this is to use a `MutationObserver` to detect when any form is added to or 
+An alternative “global” way of handling this is to use a `MutationObserver` to detect when any form is added to or
 removed from the document:
 
 ```js
@@ -112,7 +92,7 @@ import FormtacularForm from '~vendor/bigfork/silverstripe-formtacular/client/src
 
 const observer = new MutationObserver((mutations) => {
   const forms = window['formtacular_forms'];
-  
+
   mutations.forEach((mutation) => {
     [...mutation.removedNodes].forEach((node) => {
       if (node.nodeName === 'FORM') {
